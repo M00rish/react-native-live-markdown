@@ -279,8 +279,11 @@ function parseExpensiMarkToRanges(markdown: string): MarkdownRange[] {
   }
   try {
     const html = parseMarkdownToHTML(markdown);
+    console.log(`this is your html : ${html}`)
     const tokens = parseHTMLToTokens(html);
+    console.log(`this is your html : ${tokens}`)
     const tree = parseTokensToTree(tokens);
+    console.log(`this is your html : ${tokens}`)
     const [text, ranges] = parseTreeToTextAndRanges(tree);
     if (text !== markdown) {
       throw new Error(
