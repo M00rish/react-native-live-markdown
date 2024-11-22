@@ -18564,6 +18564,7 @@ ${g2}
          * If not provided, all available rules will be applied. If provided, the rules in the array will be skipped.
          */
         replace(text, { filterRules = [], shouldEscapeText = true, shouldKeepRawInput = false, disabledRules = [], extras = EXTRAS_DEFAULT } = {}) {
+          console.log(`ExpensiMark text:${text} `);
           let replacedText = shouldEscapeText ? Utils.escapeText(text) : text;
           const rules = this.getHtmlRuleset(filterRules, disabledRules, shouldKeepRawInput);
           const processRule = (rule) => {
@@ -19062,7 +19063,8 @@ ${g2}
   function parseMarkdownToHTML(markdown) {
     const parser = new import_ExpensiMark.default();
     const html = parser.replace(markdown, {
-      shouldKeepRawInput: true
+      shouldKeepRawInput: true,
+      shouldEscapeText: false
     });
     return html;
   }
@@ -19280,7 +19282,9 @@ ${g2}
       const html = parseMarkdownToHTML(markdown);
       console.log(`this is your html : ${html}`);
       const tokens = parseHTMLToTokens(html);
+      console.log(`this is your html : ${tokens}`);
       const tree = parseTokensToTree(tokens);
+      console.log(`this is your html : ${tokens}`);
       const [text, ranges] = parseTreeToTextAndRanges(tree);
       if (text !== markdown) {
         throw new Error(
