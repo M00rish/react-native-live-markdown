@@ -32,7 +32,6 @@ function parseMarkdownToHTML(markdown: string): string {
   const parser = new ExpensiMark();
   const html = parser.replace(markdown, {
     shouldKeepRawInput: true,
-    shouldEscapeText: false,
   });
   return html as string;
 }
